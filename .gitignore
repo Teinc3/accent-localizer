@@ -1,3 +1,5 @@
 __dataset
 .idea
+__pycache__
+.vscode
 .conda

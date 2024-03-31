@@ -16,6 +16,36 @@ Currently, two strategies are being considered for the implementation of the pro
     - Extract phonemes from the audio excerpt using allosaurus
     - Use the phonemes to classify the accent
 
-2. Black-box approach
-    - Directly use the audio excerpt as input to the model
-    - Let the model learn the accent classification on its own
+Update: It seems that allosaurus only accepts wav-based inputs.
+Converting millions of mp3 files to wav is not feasible.
+
+2. [Luca Arrotta](https://github.com/lucaArrotta/Age-Estimation-based-on-Human-Voice)'s approach
+    - Use a spectrogram of the audio excerpt as input to the model
+    - Let the model learn the accent classification using its features
+
+## Supported Locales
+
+US: Generic American / Mid-Atlantic
+CA: Generic Canadian (Except Quebec)
+CAR: Carribean (Except Creoles)
+HIS: Latino / Romance (Except French)
+
+EU: Generic European (Unspecified)
+ENG: England English
+CEL: Irish / Scottish / Welsh
+FR: French / Quebec / Creoles
+GER: Germanic Languages
+EAU: Eastern European / Slavic
+
+ME: Middle Eastern / North African
+WA: West African
+ZA: South African
+EA: East African
+
+ZH: East Asian (Mandarin / Cantonese, Japanese, Korean etc.)
+IND: Indian (Indian, Pakistani, Bangladeshi etc.)
+SEA: South-East Asian (Vietnamese, Thai, Malaysian, Indonesian, Filipino etc.)
+NEA: Turkish / Persian / Central Asian (Near East Asian)
+
+AUS: Australian
+NZ: New Zealander / Pacific Islander
