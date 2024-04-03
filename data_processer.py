@@ -3,6 +3,8 @@ from collections import OrderedDict
 
 import pandas as pd
 from pandas import DataFrame as df
+from pydub import AudioSegment
+from pydub.playback import play
 
 file_names = ["validated.tsv", "validated_all_accents.tsv", "validated_regions.tsv"]
 region_codes = {
@@ -63,6 +65,7 @@ def assign_regions(data: df):
     - 'goto <accent_index>' to edit the existing assigned region of an accent
     - 'continue' to continue from the largest remaining accent with no region assigned
     - 'exit' to save the current progress and exit the program
+    - 'listen' to listen to a random audio clip of the accent
     - 'help' to view the list of possible commands
 
     All other invalid inputs will be ignored and the user will be re-prompted.
@@ -144,6 +147,18 @@ def assign_regions(data: df):
             for code, region in region_codes.items():
                 print(f"{code}: {region}")
             print("\n")
+            
+        elif user_input == 'listen':
+            # Search for all rows with the current accent and get a random audio clip
+            same_accent_rows = data[data['accents'] == current_accent]
+            if not same_accent_rows.empty:
+                sample_row = same_accent_rows.sample(1)
+                audio_file = sample_row['path'].values[0]
+                sentence = sample_row['sentence'].values[0]
+                audio = AudioSegment.from_file(os.path.join('__dataset/clips/', audio_file))
+                print(f"Playing audio clip {audio_file} for accent '{current_accent}'.\nSentence: '{sentence}'")
+                play(audio)
+
         elif user_input in region_codes.keys():
             accent_dict[current_accent][0] = user_input
             current_accent_index += 1
