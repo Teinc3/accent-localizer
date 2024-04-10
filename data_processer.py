@@ -8,19 +8,18 @@ from pydub.playback import play
 
 file_names = ["validated.tsv", "validated_all_accents.tsv", "validated_regions.tsv"]
 region_codes = {
-    'US': 'Generic American / Mid-Atlantic',
-    'CAN': 'Generic Canadian (Except Quebec)',
-    'CAB': 'Carribean (Except Creoles)',
+    'US': 'Generic American / Canadian / Mid-Atlantic',
+    'CAB': 'Carribean / South Atlantic',
     'HIS': 'Latino / Romance (Except French)',
 
-    'EU': 'Generic European (Unspecified)',
+    'EU': 'Generic European / Unspecified / Uncategorized',
     'ENG': 'England English',
     'CEL': 'Irish / Scottish / Welsh',
-    'FR': 'French / Quebec / Creoles',
+    'FR': 'French / Quebec',
     'GER': 'Germanic Languages',
     'EAU': 'Eastern European / Slavic',
 
-    'ME': 'Middle Eastern and North African',
+    'ME': 'Middle Eastern, North African and Central Asian',
     'WAF': 'West African',
     'ZA': 'South African',
     'EAF': 'East African',
@@ -28,10 +27,8 @@ region_codes = {
     'ETA': 'East Asian (Mandarin / Cantonese, Japanese, Korean etc.)',
     'IN': 'Indian (Indian, Pakistani, Bangladeshi etc.)',
     'SEA': 'South-East Asian (Vietnamese, Thai, Malaysian, Indonesian, Filipino etc.)',
-    'NEA': 'Turkish / Persian / Central Asian (Near East Asian)',
 
-    'AUS': 'Australian',
-    'NZ': 'New Zealander / Pacific Islander'
+    'AUS': 'Australian / New Zealander / Pacific Islander'
 }
 
 def save_file(output_file_path, data: df):
